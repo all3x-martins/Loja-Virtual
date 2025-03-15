@@ -6,11 +6,17 @@
     padding: 20px;
 }
 
+.cart-container {
+    display: flex;
+    gap: 3rem;
+}
+
 #cart-table {
     width: 100%;
     border-collapse: collapse;
     background-color: #ffffff;
     border-radius: 5px;
+    display: block;
 }
 
 #cart-table th,
@@ -90,6 +96,12 @@ button i {
     display: none;
     background-color: #ffffff;
     border-radius: 5px;
+    padding: 1.2rem;
+}
+
+.cart-total-title {
+    text-align: center;
+    border-bottom: 1px solid #eee;
 }
 
 .cart-total-info
@@ -100,6 +112,25 @@ button i {
 .cart-total-info p {
     margin: 10px 0;
     font-size: 18px;
+    text-align: left;
+}
+
+p span {
+    margin-left: 6rem;
+  }
+
+#total-price {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--cor-primaria-azul);
+}
+
+#discounted-total {
+    color: var(--cor-primaria-azul);
+}
+
+#discount {
+    color: var(--cor-primaria-laranja);
 }
 
 #cart-installment-select {
@@ -120,6 +151,7 @@ button i {
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-size: 16px;
+    font-weight: 700;
 }
 
 .cart-finalize-button:hover {

@@ -130,14 +130,15 @@ function renderizarCarrinho() {
     tabelaCorpo.appendChild(fragment);
 
     // Calcula o desconto de 5% para pagamento à vista
-    const desconto = 0.05; // Mudança aqui: 0.05 para 5%
+    const desconto = 0.05; 
     const totalComDesconto = totalVista * (1 - desconto);
     const totalParcelado = totalVista / 0.95; // Preço total com 5% de acréscimo
 
     totalContainer.innerHTML = `
         <div class="cart-total-info">
-            <p>Total à Vista (com 5% de desconto): <span id="total-a-vista">${precoFormatado(totalComDesconto)}</span></p>
-            <p>Economia: <span id="economia">${precoFormatado(totalVista - totalComDesconto)}</span></p>
+            <h1 class="cart-total-title">Resumo</h1>
+            <p>Total à Vista: <span id="discounted-total">${precoFormatado(totalComDesconto)}</span></p>
+            <p>Economia: <span id="discount">${precoFormatado(totalVista - totalComDesconto)}</span></p>
             <label for="cart-installment-select">Total Parcelado:</label>
             <select id="cart-installment-select">
                 <option value="1">1x ${precoFormatado(totalComDesconto)} (com 5% de desconto)</option>
@@ -145,7 +146,7 @@ function renderizarCarrinho() {
                     <option value="${n}">${n}x ${precoFormatado(totalParcelado / n)}</option>
                 `).join('')}
             </select>
-            <p>Total: <span id="total-preco">${precoFormatado(totalComDesconto)}</span></p>
+            <p>Total: <span id="total-price">${precoFormatado(totalComDesconto)}</span></p>
         </div>
         <button id="cart-finalize-button" class="cart-finalize-button">Finalizar Compra</button>
     `;
@@ -153,7 +154,7 @@ function renderizarCarrinho() {
 
     // Atualiza o valor total quando o select de parcelas mudar
     const selectParcelas = document.getElementById('cart-installment-select');
-    const totalPrecoSpan = document.getElementById('total-preco');
+    const totalPrecoSpan = document.getElementById('total-price');
     selectParcelas.addEventListener('change', () => {
         const numParcelas = parseInt(selectParcelas.value, 10);
         if (numParcelas === 1) {
